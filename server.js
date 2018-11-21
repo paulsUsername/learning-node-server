@@ -82,6 +82,15 @@ app.get("/bad", (req, res) => {
     })
 })
 
+var projectText = "This is where you will find a list of Waymarked Trails web app projects."
+
+app.get("/projects", (req, res) => {
+    res.render('projects.hbs', {
+        pageTitle: "Projects",
+        projectPageBody: projectText
+    })
+})
+
 app.listen(port, () => {
     console.log(`Server is up on port ${port}`)
 });
