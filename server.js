@@ -79,18 +79,26 @@ app.get("/bad", (req, res) => {
     res.send({
         pageTitle: "Error",
         error: "Unable to handel request."
-    })
-})
+    });
+});
 
-var projectText = "This is where you will find a list of Waymarked Trails web app projects."
+var projectsText = "This is where you will find a list of Waymarked Trails web app projects."
 
 app.get("/projects", (req, res) => {
     res.render('projects.hbs', {
         pageTitle: "Projects",
-        projectPageBody: projectText
-    })
-})
+        projectPageBody: projectsText
+    });
+});
+
+app.use((req, res) => {
+    res.render('locationNotFound.hbs', {
+        pageTitle: "Could not find that destination",
+        locationNotFoundBody: "Please select another page, this was not found."
+    });
+});
 
 app.listen(port, () => {
     console.log(`Server is up on port ${port}`)
 });
+
